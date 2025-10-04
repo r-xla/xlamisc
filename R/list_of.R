@@ -29,7 +29,7 @@ new_list_property <- function(
     validator = function(value) {
       c(
         if (
-          !identical(of, class_any) &&
+          !identical(of, S7::class_any) &&
             !all(vapply(value, S7:::class_inherits, logical(1L), of))
         ) {
           paste("must only contain elements of class", S7:::class_desc(of))
