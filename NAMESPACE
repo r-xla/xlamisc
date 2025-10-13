@@ -2,3 +2,5 @@
 
 export(get_dims)
 export(list_of)
+export(seq_along0)
+export(seq_len0)
