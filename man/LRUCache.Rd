@@ -4,8 +4,26 @@
 \alias{LRUCache}
 \title{Least Recently Used Cache}
 \description{
-An implementation of a least-recently-used cache built on top of \code{\link[utils:hashtab]{utils::hashtab}}, which
-therefore takes care of hash collisions.
+An implementation of a least-recently-used cache built on top of \code{\link[utils:hashtab]{utils::hashtab}}.
+Therefore, arbitrary keys can be used, as opposed to the implementation in \CRANpkg{cachemem},
+which relies on environments.
+}
+\details{
+This LRU cache is implemented as a combination of a hashmap and a doubly linked list.
+The hashmap is used for lookups and the doubly linked list is used to maintain the
+ordering of most recently used to least recently used items.
+Whenever an element is added or accessed, it is moved to the front of the list.
+}
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{capacity}}{(\code{integer(1)})\cr
+The maximum capacity of the cache.}
+
+\item{\code{size}}{(\code{integer(1)})\cr
+The number of items currently stored.}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -16,8 +34,6 @@ therefore takes care of hash collisions.
 \item \href{#method-LRUCache-has}{\code{LRUCache$has()}}
 \item \href{#method-LRUCache-remove}{\code{LRUCache$remove()}}
 \item \href{#method-LRUCache-clear}{\code{LRUCache$clear()}}
-\item \href{#method-LRUCache-size}{\code{LRUCache$size()}}
-\item \href{#method-LRUCache-capacity}{\code{LRUCache$capacity()}}
 \item \href{#method-LRUCache-keys_mru_to_lru}{\code{LRUCache$keys_mru_to_lru()}}
 \item \href{#method-LRUCache-clone}{\code{LRUCache$clone()}}
 }
@@ -104,7 +120,7 @@ Key.}
 \if{html}{\out{<a id="method-LRUCache-remove"></a>}}
 \if{latex}{\out{\hypertarget{method-LRUCache-remove}{}}}
 \subsection{Method \code{remove()}}{
-Remove \code{key} from the cache, returning \code{TRUE} if it was present.
+Remove \code{key} from the cache, returning the value if it was present or \code{NULL} otherwise.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LRUCache$remove(key)}\if{html}{\out{</div>}}
 }
@@ -125,26 +141,6 @@ Key.}
 Clear all entries from the cache.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LRUCache$clear()}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LRUCache-size"></a>}}
-\if{latex}{\out{\hypertarget{method-LRUCache-size}{}}}
-\subsection{Method \code{size()}}{
-Return the number of items currently stored.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LRUCache$size()}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LRUCache-capacity"></a>}}
-\if{latex}{\out{\hypertarget{method-LRUCache-capacity}{}}}
-\subsection{Method \code{capacity()}}{
-Return the maximum capacity of the cache.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LRUCache$capacity()}\if{html}{\out{</div>}}
 }
 
 }
