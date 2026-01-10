@@ -1,73 +1,59 @@
-# copied from: https://github.com/lawremi/wizrd/blob/main/R/utils.R
-
-#' @title Create a list property
-#' @description
-#' Create a list property.
-#' @param class The class of the list.
-#' @param ... The properties of the list.
+#' @title Create a new list of class
+#' @description Create a new list of class
+#' @param class_name The name of the class
+#' @param item_class The class of the items in the list
+#' @param validator A validator function
+#' @return A list of class
 #' @export
-list_of <- function(class, ...) {
-  new_list_property(of = class, ...)
-}
+new_list_of <- function(class_name, item_class, validator = NULL) {
+  function(items = list()) {
+    checkmate::assert_list(items, item_class)
 
-new_list_property <- function(
-  ...,
-  validator = NULL,
-  default = if (isTRUE(named)) {
-    quote(setNames(list(), character()))
-  } else {
-    quote(list())
-  },
-  of = S7::class_any,
-  named = NA,
-  min_length = 0L,
-  max_length = Inf
-) {
-  prop <- S7::new_property(
-    S7::class_list,
-    ...,
-    validator = function(value) {
-      c(
-        if (
-          !identical(of, S7::class_any) &&
-            !all(vapply(value, getFromNamespace("class_inherits", "S7"), logical(1L), of))
-        ) {
-          paste("must only contain elements of class", getFromNamespace("class_desc", "S7")(of))
-        },
-        if (!is.null(of_validator)) {
-          msgs <- unlist(lapply(value, of_validator))
-          if (length(msgs) > 0L) {
-            paste(
-              "element(s) failed validation:",
-              paste0("'", unique(msgs), "'", collapse = ", ")
-            )
-          }
-        },
-        if (isTRUE(named) && is.null(names(value))) {
-          "must have names"
-        },
-        if (identical(named, FALSE) && !is.null(names(value))) {
-          "must not have names"
-        },
-        if (length(value) < min_length || length(value) > max_length) {
-          paste0("must have length in [", min_length, ", ", max_length, "]")
-        },
-        if (!is.null(validator)) {
-          validator(value)
-        }
-      )
-    },
-    default = default
-  )
-  prop$of <- of
-  if (inherits(of, "S7_property")) {
-    of_validator <- of$validator
-    of <- of$class
-  } else {
-    of_validator <- NULL
+    # Run custom validator if provided
+    if (!is.null(validator)) {
+      validator <- get("validator") # r-cmd-check NOTE: undefined global
+      err <- validator(items)
+      if (!checkmate::test_null(err)) {
+        cli::cli_abort(err)
+      }
+    }
+
+    structure(
+      items,
+      class = c(class_name, "list_of", "list")
+    )
   }
-  prop$named <- named
-  class(prop) <- c("list_S7_property", class(prop))
-  prop
 }
 
+#' @export
+`==.list_of` <- function(e1, e2) {
+  length(e1) == length(e2) &&
+    all(
+      vapply(
+        seq_along(e1),
+        function(i) {
+          e1[[i]] == e2[[i]]
+        },
+        logical(1)
+      )
+    )
+}
+
+#' @export
+`!=.list_of` <- function(e1, e2) {
+  length(e1) != length(e2) ||
+    any(
+      vapply(
+        seq_along(e1),
+        function(i) {
+          e1[[i]] != e2[[i]]
+        },
+        logical(1)
+      )
+    )
+}
+
+#' @export
+length.list_of <- function(x) {
+  length(unclass(x))
+}
