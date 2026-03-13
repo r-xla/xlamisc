@@ -26,7 +26,7 @@ format_bib = function(..., bibentries = NULL) { # nolint
   if (is.null(bibentries)) {
     bibentries = get("bibentries", envir = parent.frame())
   }
-  assert_list(bibentries, "bibentry", names = "unique")
+  checkmate::assert_list(bibentries, "bibentry", names = "unique")
   keys = list(...)
   str = vapply(keys, function(entry) tools::toRd(bibentries[[entry]]), character(1))
   paste0(str, collapse = "\n\n")
@@ -38,7 +38,7 @@ cite_bib = function(..., bibentries = NULL) { # nolint
   if (is.null(bibentries)) {
     bibentries = get("bibentries", envir = parent.frame())
   }
-  assert_list(bibentries, "bibentry", names = "unique")
+  checkmate::assert_list(bibentries, "bibentry", names = "unique")
 
   keys = list(...)
   str = vapply(keys, function(entry) {
