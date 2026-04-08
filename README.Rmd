@@ -1,12 +1,22 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # xlamisc
 
 <!-- badges: start -->
-
-[![CRAN
-status](https://www.r-pkg.org/badges/version/xlamisc)](https://CRAN.R-project.org/package=xlamisc)
+[![CRAN status](https://www.r-pkg.org/badges/version/xlamisc)](https://CRAN.R-project.org/package=xlamisc)
 ![R-CMD-check](https://github.com/r-xla/xlamisc/actions/workflows/R-CMD-check.yaml/badge.svg)
 [![r-universe](https://r-xla.r-universe.dev/badges/xlamisc)](https://r-xla.r-universe.dev/xlamisc)
 <!-- badges: end -->
