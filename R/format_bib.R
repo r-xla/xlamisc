@@ -22,31 +22,43 @@
 #' bibentries = list(R = citation())
 #' format_bib("R")
 #' cite_bib("R")
-format_bib = function(..., bibentries = NULL) { # nolint
+format_bib = function(..., bibentries = NULL) {
+  # nolint
   if (is.null(bibentries)) {
     bibentries = get("bibentries", envir = parent.frame())
   }
   checkmate::assert_list(bibentries, "bibentry", names = "unique")
   keys = list(...)
-  str = vapply(keys, function(entry) tools::toRd(bibentries[[entry]]), character(1))
+  str = vapply(
+    keys,
+    function(entry) tools::toRd(bibentries[[entry]]),
+    character(1)
+  )
   paste0(str, collapse = "\n\n")
 }
 
 #' @rdname format_bib
 #' @export
-cite_bib = function(..., bibentries = NULL) { # nolint
+cite_bib = function(..., bibentries = NULL) {
+  # nolint
   if (is.null(bibentries)) {
     bibentries = get("bibentries", envir = parent.frame())
   }
   checkmate::assert_list(bibentries, "bibentry", names = "unique")
 
   keys = list(...)
-  str = vapply(keys, function(entry) {
-    x = bibentries[[entry]]
-    family = x$author[[1L]]$family
-    if (is.null(family)) family = x$author[[1L]]
-    sprintf("%s (%s)", family, x$year)
-  }, character(1))
+  str = vapply(
+    keys,
+    function(entry) {
+      x = bibentries[[entry]]
+      family = x$author[[1L]]$family
+      if (is.null(family)) {
+        family = x$author[[1L]]
+      }
+      sprintf("%s (%s)", family, x$year)
+    },
+    character(1)
+  )
 
   if (length(str) >= 3L) {
     str = c(toString(utils::head(str, -1L)), utils::tail(str, 1L))
