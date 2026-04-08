@@ -5,7 +5,6 @@ test_that("shapevec_repr formats shapes correctly", {
 })
 
 test_that("shapevec_repr handles NA as ?", {
-
   expect_equal(shapevec_repr(c(2, NA, 4)), "(2,?,4)")
   expect_equal(shapevec_repr(c(NA, NA)), "(?,?)")
 })
