@@ -1,3 +1,5 @@
+# xlamisc (development version)
+
 # xlamisc 0.2.0
 
 * Added `shapevec_repr()` and `shapevec_reprs()` for formatting shape vectors.
