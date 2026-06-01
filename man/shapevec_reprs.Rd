@@ -7,8 +7,7 @@
 shapevec_reprs(...)
 }
 \arguments{
-\item{...}{\cr
-Shape vectors to format.}
+\item{...}{Shape vectors to format.}
 }
 \value{
 (\code{character(1)})\cr

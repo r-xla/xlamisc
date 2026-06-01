@@ -15,8 +15,7 @@ shapevec_repr <- function(shape) {
 #' @title Format multiple shape vectors
 #' @description
 #' Applies [shapevec_repr()] to multiple shapes and combines them.
-#' @param ... \cr
-#'   Shape vectors to format.
+#' @param ... Shape vectors to format.
 #' @return (`character(1)`)\cr
 #'   The formatted shapes, separated by ", ".
 #' @export

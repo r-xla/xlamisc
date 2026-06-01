@@ -9,13 +9,20 @@ new_list_of(class_name, item_class, validator = NULL)
 \arguments{
 \item{class_name}{The name of the class}
 
-\item{item_class}{The class of the items in the list}
+\item{item_class}{The class of the items in the list. Documentation
+only -- not enforced at construction.}
 
-\item{validator}{A validator function}
+\item{validator}{A validator function. Receives \code{items}, returns
+\code{NULL} on success or a \code{cli_abort}-style message on failure.}
 }
 \value{
-A list of class
+A list-of-\code{class_name} constructor.
 }
 \description{
-Create a new list of class
+Returns a constructor for a typed list. The constructor checks that
+\code{items} is a list and runs the optional \code{validator}, but does not
+iterate \code{items} to validate per-element class -- this makes it cheap
+enough to call from hot paths like IR construction. Trust the
+caller to pass items of the right class; downstream consumers will
+fail with their own (clearer) error if not.
 }
