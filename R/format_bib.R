@@ -23,14 +23,14 @@
 #' bibentries = list(R = citation())
 #' format_bib("R")
 #' cite_bib("R")
-format_bib = function(..., bibentries = NULL) {
+format_bib <- function(..., bibentries = NULL) {
   # nolint
   if (is.null(bibentries)) {
-    bibentries = get("bibentries", envir = parent.frame())
+    bibentries <- get("bibentries", envir = parent.frame())
   }
   checkmate::assert_list(bibentries, "bibentry", names = "unique")
-  keys = list(...)
-  str = vapply(
+  keys <- list(...)
+  str <- vapply(
     keys,
     function(entry) tools::toRd(bibentries[[entry]]),
     character(1)
@@ -40,36 +40,36 @@ format_bib = function(..., bibentries = NULL) {
 
 #' @rdname format_bib
 #' @export
-cite_bib = function(..., bibentries = NULL) {
+cite_bib <- function(..., bibentries = NULL) {
   # nolint
   if (is.null(bibentries)) {
-    bibentries = get("bibentries", envir = parent.frame())
+    bibentries <- get("bibentries", envir = parent.frame())
   }
   checkmate::assert_list(bibentries, "bibentry", names = "unique")
 
-  keys = list(...)
-  str = vapply(
+  keys <- list(...)
+  str <- vapply(
     keys,
     function(entry) {
-      x = bibentries[[entry]]
+      x <- bibentries[[entry]]
       sprintf("%s (%s)", format_authors(x$author), x$year)
     },
     character(1)
   )
 
   if (length(str) >= 3L) {
-    str = c(toString(utils::head(str, -1L)), utils::tail(str, 1L))
+    str <- c(toString(utils::head(str, -1L)), utils::tail(str, 1L))
   }
 
   paste0(str, collapse = " and ")
 }
 
 # Formats a `person()` list as e.g. "A", "A & B", "A, B & C", "A et al."
-format_authors = function(authors) {
-  families = vapply(
+format_authors <- function(authors) {
+  families <- vapply(
     authors,
     function(p) {
-      family = p$family
+      family <- p$family
       # Organizational/mononymous authors (e.g. person(given = "R Core Team"))
       # have no family name.
       if (is.null(family)) as.character(p) else family
@@ -77,7 +77,7 @@ format_authors = function(authors) {
     character(1)
   )
 
-  n = length(families)
+  n <- length(families)
   if (n <= 2L) {
     paste(families, collapse = " & ")
   } else if (n == 3L) {
