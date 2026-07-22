@@ -26,8 +26,9 @@ documentation with \CRANpkg{roxygen2}.
 \itemize{
 \item \code{format_bib()} is intended to be called in the \verb{@references} section and
 formats the complete entry using \code{\link[tools:toRd]{tools::toRd()}}.
-\item \code{cite_bib()} returns a short inline citation in the format
-\code{"LastName (Year)"}.
+\item \code{cite_bib()} returns a short inline citation listing all authors, e.g.
+\code{"A (Year)"} for one author, \code{"A & B (Year)"} for two, \code{"A, B & C (Year)"}
+for three, and \code{"A et al. (Year)"} for four or more.
 }
 }
 \examples{

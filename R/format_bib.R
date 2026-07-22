@@ -6,8 +6,9 @@
 #'
 #' * `format_bib()` is intended to be called in the `@references` section and
 #'   formats the complete entry using [tools::toRd()].
-#' * `cite_bib()` returns a short inline citation in the format
-#'   `"LastName (Year)"`.
+#' * `cite_bib()` returns a short inline citation listing all authors, e.g.
+#'   `"A (Year)"` for one author, `"A & B (Year)"` for two, `"A, B & C (Year)"`
+#'   for three, and `"A et al. (Year)"` for four or more.
 #'
 #' @param ... (`character()`)\cr
 #'   One or more names of bibentries.
@@ -51,11 +52,7 @@ cite_bib = function(..., bibentries = NULL) {
     keys,
     function(entry) {
       x = bibentries[[entry]]
-      family = x$author[[1L]]$family
-      if (is.null(family)) {
-        family = x$author[[1L]]
-      }
-      sprintf("%s (%s)", family, x$year)
+      sprintf("%s (%s)", format_authors(x$author), x$year)
     },
     character(1)
   )
@@ -65,4 +62,27 @@ cite_bib = function(..., bibentries = NULL) {
   }
 
   paste0(str, collapse = " and ")
+}
+
+# Formats a `person()` list as e.g. "A", "A & B", "A, B & C", "A et al."
+format_authors = function(authors) {
+  families = vapply(
+    authors,
+    function(p) {
+      family = p$family
+      # Organizational/mononymous authors (e.g. person(given = "R Core Team"))
+      # have no family name.
+      if (is.null(family)) as.character(p) else family
+    },
+    character(1)
+  )
+
+  n = length(families)
+  if (n <= 2L) {
+    paste(families, collapse = " & ")
+  } else if (n == 3L) {
+    paste0(toString(families[1:2]), " & ", families[3L])
+  } else {
+    paste(families[1L], "et al.")
+  }
 }
