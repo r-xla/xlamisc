@@ -1,8 +1,7 @@
 # xlamisc 0.4.1
 
-* `new_list_of()` no longer takes a `validator` argument. It was unused, and
-  its `NULL` default made `R CMD check` report "no visible global function
-  definition for 'validator'" in packages that store the returned
+* `new_list_of()` no longer causes `R CMD check` to report "no visible global
+  function definition for 'validator'" in packages that store the returned
   constructors.
 
 # xlamisc 0.3.0
