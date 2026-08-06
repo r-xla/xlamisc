@@ -1,3 +1,5 @@
+# xlamisc (development version)
+
 # xlamisc 0.3.0
 
 * `cite_bib()` now lists all authors, e.g. `"A & B (Year)"` or
