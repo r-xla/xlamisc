@@ -1,3 +1,5 @@
+# xlamisc (development version)
+
 # xlamisc 0.4.1
 
 * `new_list_of()` no longer causes `R CMD check` to report "no visible global
