@@ -1,4 +1,8 @@
-# xlamisc (development version)
+# xlamisc 0.3.0
+
+* `cite_bib()` now lists all authors, e.g. `"A & B (Year)"` or
+  `"A et al. (Year)"`.
+* Minimum required R version is now 4.3.0.
 
 # xlamisc 0.3.0
 
