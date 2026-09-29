@@ -1,19 +1,17 @@
 Package: xlamisc
-Title: Tensor Generics and Data Types for the 'XLA' Ecosystem
-Version: 0.4.1.9000
+Title: Helper Functions for 'r-xla'
+Version: 0.5.0
 Authors@R: c(
     person("Sebastian", "Fischer", , "seb.fischer@tutamail.com", role = c("aut", "cre"),
            comment = c(ORCID = "https://orcid.org/0000-0002-9609-3197")),
     person("Daniel", "Falbel", , "daniel@posit.co", role = "aut",
            comment = c(ORCID = "https://orcid.org/0009-0006-0143-2392"))
   )
-Description: Provides S3 generics for querying tensors, such as their shape,
-    data type and device, and for converting them to R arrays and raw
-    vectors. Also provides an enum-style class for tensor element types
-    (booleans, signed and unsigned integers, floats and complex numbers)
-    together with helpers to inspect their category and bit width. These
-    are shared by the packages that bring 'XLA' <https://openxla.org/xla>
-    to R.
+Description: Frequently used generics and helper functions used in 'anvl'
+    and its companion packages 'stablehlo' and 'pjrt'. Comes with S3
+    generics to query tensors (shape, data type, device) and to convert
+    them to R arrays and raw vectors, as well as an enum-style class for
+    tensor element types.
 License: MIT + file LICENSE
 URL: https://r-xla.github.io/xlamisc/, https://github.com/r-xla/xlamisc
 BugReports: https://github.com/r-xla/xlamisc/issues

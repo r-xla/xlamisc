@@ -4,9 +4,9 @@
 \name{xlamisc-package}
 \alias{xlamisc}
 \alias{xlamisc-package}
-\title{xlamisc: Tensor Generics and Data Types for the 'XLA' Ecosystem}
+\title{xlamisc: Helper Functions for 'anvl'}
 \description{
-Provides S3 generics for querying tensors, such as their shape, data type and device, and for converting them to R arrays and raw vectors. Also provides an enum-style class for tensor element types (booleans, signed and unsigned integers, floats and complex numbers) together with helpers to inspect their category and bit width. These are shared by the packages that bring 'XLA' \url{https://openxla.org/xla} to R.
+Frequently used generics and helper functions used in 'anvl' and its companion packages 'stablehlo' and 'pjrt'. Comes with S3 generics to query tensors (shape, data type, device) and to convert them to R arrays and raw vectors, as well as an enum-style class for tensor element types. This package also supersedes the package 'tengen'.
 }
 \seealso{
 Useful links:
