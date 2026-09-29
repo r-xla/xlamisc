@@ -11,7 +11,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/r-xla/xlamisc/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/r-xla/xlamisc/blob/v0.5.0/DESCRIPTION)
 
 Fischer S, Falbel D (2026). *xlamisc: Helper Functions for 'r-xla'*. R
 package version 0.5.0, <https://r-xla.github.io/xlamisc/>.
