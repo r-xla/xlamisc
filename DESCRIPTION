@@ -1,5 +1,5 @@
 Package: xlamisc
-Title: Helper Functions for the XLA Ecosystem
+Title: Tensor Generics and Data Types for the 'XLA' Ecosystem
 Version: 0.4.1.9000
 Authors@R: c(
     person("Sebastian", "Fischer", , "seb.fischer@tutamail.com", role = c("aut", "cre"),
@@ -7,16 +7,25 @@ Authors@R: c(
     person("Daniel", "Falbel", , "daniel@posit.co", role = "aut",
            comment = c(ORCID = "https://orcid.org/0009-0006-0143-2392"))
   )
-Description: Helper functions for the XLA ecosystem.
+Description: Provides S3 generics for querying tensors, such as their shape,
+    data type and device, and for converting them to R arrays and raw
+    vectors. Also provides an enum-style class for tensor element types
+    (booleans, signed and unsigned integers, floats and complex numbers)
+    together with helpers to inspect their category and bit width. These
+    are shared by the packages that bring 'XLA' <https://openxla.org/xla>
+    to R.
 License: MIT + file LICENSE
+URL: https://r-xla.github.io/xlamisc/, https://github.com/r-xla/xlamisc
+BugReports: https://github.com/r-xla/xlamisc/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.3.0)
 Imports:
-    cli,
     checkmate,
-    R6
+    cli,
+    rlang,
+    utils
 Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0

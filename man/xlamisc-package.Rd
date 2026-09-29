@@ -4,9 +4,18 @@
 \name{xlamisc-package}
 \alias{xlamisc}
 \alias{xlamisc-package}
-\title{xlamisc: Helper Functions for the XLA Ecosystem}
+\title{xlamisc: Tensor Generics and Data Types for the 'XLA' Ecosystem}
 \description{
-Helper functions for the XLA ecosystem.
+Provides S3 generics for querying tensors, such as their shape, data type and device, and for converting them to R arrays and raw vectors. Also provides an enum-style class for tensor element types (booleans, signed and unsigned integers, floats and complex numbers) together with helpers to inspect their category and bit width. These are shared by the packages that bring 'XLA' \url{https://openxla.org/xla} to R.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://r-xla.github.io/xlamisc/}
+  \item \url{https://github.com/r-xla/xlamisc}
+  \item Report bugs at \url{https://github.com/r-xla/xlamisc/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Sebastian Fischer \email{seb.fischer@tutamail.com} (\href{https://orcid.org/0000-0002-9609-3197}{ORCID})
@@ -18,3 +27,4 @@ Authors:
 }
 
 }
+\keyword{internal}
