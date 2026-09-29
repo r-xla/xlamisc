@@ -1,10 +1,10 @@
-# xlamisc: Helper Functions for 'r-xla'
+# xlamisc: Helper Functions for 'anvl'
 
 Frequently used generics and helper functions used in 'anvl' and its
 companion packages 'stablehlo' and 'pjrt'. Comes with S3 generics to
 query tensors (shape, data type, device) and to convert them to R arrays
 and raw vectors, as well as an enum-style class for tensor element
-types.
+types. This package also supersedes the package 'tengen'.
 
 ## See also
 
