@@ -1,3 +1,5 @@
+# xlamisc (development version)
+
 # xlamisc 0.5.0
 
 * breaking: xlamisc now contains the former tengen package: the tensor
