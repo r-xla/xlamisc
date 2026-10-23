@@ -2,7 +2,6 @@
 ^LICENSE\.md$
 ^\.claude$
 ^AGENTS\.md$
-^CLAUDE\.md$
 ^README\.Rmd$
 ^_pkgdown\.yml$
 ^docs$
