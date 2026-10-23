@@ -1,3 +1,3 @@
 # NA
 
-@../claude-config/CLAUDE.md
+@../claude-config/AGENTS.md
